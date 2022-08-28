@@ -18,7 +18,7 @@ def check(event):
 
 def create_cards(characters):
     for i, c in enumerate(characters):
-        document["cards"].attach(html.DIV(c, id="char{}".format(i)))
+        document["cards"].attach(html.SPAN(c, id="char{}".format(i), draggable=True))
 
 cards_list = list(initial_cards)
 shuffle(cards_list)
@@ -30,8 +30,7 @@ def mouseover(event):
 def dragstart(event):
     event.dataTransfer.setData("character", event.target.id)
 
-for card in document.select("#cards div"):
-    card.draggable = True
+for card in document.select("#cards span"):
     card.bind("mouseover", mouseover)
     card.bind("dragstart", dragstart)
 
