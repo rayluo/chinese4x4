@@ -5,6 +5,30 @@ from random import shuffle
 
 initial_cards = "一知半解一心一意一丘之貉一目了然"
 
+def set_table(characters):
+    for i, cell in enumerate(document.select("#table td")):
+        cell.text = characters[i]
+
+set_table(initial_cards)
+
+def create_empty_cards(n):
+    for i in range(n):
+        document["cards"].attach(html.SPAN("", id="char{}".format(i), draggable=True))
+
+create_empty_cards(16)
+
+@bind("#start", "click")
+def start(event):
+    document["start"].text = "Restart"
+    
+    for cell in document.select("#table td"):
+        cell.text = ""
+    
+    cards_list = list(initial_cards)
+    shuffle(cards_list)
+    for i, c in enumerate(cards_list):
+        document["char" + str(i)].text = c
+
 @bind("#check", "click")
 def check(event):
     wrong_count = 0
@@ -16,13 +40,6 @@ def check(event):
         str(wrong_count) + " characters are in the wrong place."
         ) if wrong_count != 0 else "Correct!"
 
-def create_cards(characters):
-    for i, c in enumerate(characters):
-        document["cards"].attach(html.SPAN(c, id="char{}".format(i), draggable=True))
-
-cards_list = list(initial_cards)
-shuffle(cards_list)
-create_cards(cards_list)
 
 def mouseover(event):
     event.target.style.cursor = "pointer"
@@ -40,12 +57,9 @@ def dragover(event):
 
 def drop(event):
     character = document[event.dataTransfer.getData("character")]
-    if event.target.text == "——":
-        event.target.text = character.text
-    else:
-        to_replace = event.target.text
-        event.target.text = character.text
-        character.text = to_replace
+    to_replace = event.target.text
+    event.target.text = character.text
+    character.text = to_replace
     event.preventDefault()
 
 for cell in document.select("td"):
