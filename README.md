@@ -1,54 +1,31 @@
-# brython-project-template
+# Chinese Learning Project (Demo)
 
-## What is it?
+## Overview
 
-This template contains the following characteristics that are likely useful
-when starting a new [Brython](https://brython.info)-powered project.
+This project connects the Eduhack theme of education to our team's interest in our Chinese culture. We hope to add more to this project in the future, but this demo website currently implements a tried-and-true 4x4 technique for learning Chinese characters and idioms. The technique works as follows:
 
-* The index.html embeds a loading animation to give end user a hint to be patient.
-  This can be helpful because the first time loading of Brython is slower.
-  (Note to Developer: The loading animation does *not* represent the real progress.
-  If your website stuck with the loading animation,
-  open the browser console to check for error messages.)
-* Although not a Brython-relevant feature,
-  this template includes a github workflow to deploy your each push to Github Pages
-  (After the first deployment which prepares your website into the default `gh-pages` branch,
-  you need a one-time effort to
-  [enable Github Pages](https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
-   for your github repo.)
-* The index.html automatically loads latest released version of Brython from CDN.
-  You can easily switch to use the not-yet-released latest Brython source from github.
-* The index.html references bootstrap from CDN for better layout.
-* An optional browser-console simulator, useful if you are browsing from Android device.
-  (All these can be easily comment or uncomment from the index.html.)
-* The website root directory is nested inside this project.
-  This setup would provide better separation
-  when you also creates virtual env `.venv` inside your project directory.
-  (Otherwise you could hit [a known issue](https://github.com/brython-dev/brython/issues/1603).)
+Four idioms of four characters each are arranged in a 4x4 grid of 16 characters. After learning the meaning and pronunciation of each idiom from an external source (we will make pronunciations and meanings part of our website in the future), the grid will separate into small puzzle pieces where each piece contains a character. The user will then try to put the shuffled pieces back on the grid to form their original arrangement. Ideally, the user will say each character out loud while putting the pieces together. After redoing the puzzle several times, the user will have learned the shape, pronunciation, and meaning of each character and idiom.
 
-## How to use?
+## Innovation
 
-You can use this repo as a template to start your own project.
+A family friend developed the 4x4 technique on paper several years ago, and the technique has proven to be fast and efficient for learning. But as far as we know, a digital version has not been made before. Our implementation on the web saves paper and helps the environment.
 
-1. Your options are:
-   * [use this repo as a template to start your project on github](https://github.com/rayluo/brython-project-template/generate),
-   * or manually clone [this project](https://github.com/rayluo/brython-project-template)
-   * or [download its zip package](https://github.com/rayluo/brython-project-template/archive/refs/heads/main.zip)
-2. Run `python3 -m http.server` to start a web server,
-   and then visit `http://localhost:8000` to see it in action.
+## Execution
 
-That is all. Once you are familiar with this project's structure,
-you can modify it by changing the content between
-`<!-- The real project content starts from here -->` and `<!-- The real project content ends here -->`
-in `index.html`,
-and content inside `main.py`.
+After discussing to agree on this idea, team members ventured to learn the basics of web development as quickly as possible. To facilitate communication and accountability in overcoming the challenge of the initial knowledge gap, we communicated on Discord with frequent check-ins.
 
-Alternatively, if you already have an existing project,
-you can add the loading animation by including this snippet into your `index.html`
+One team member created the home page, while the other team member made the 4x4 technique demo page. Files were exchanged such that the final product was put together in VS Code and on Github on one team member's computer.
 
-```html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+## Practicality
 
-<script src="https://rayluo.github.io/brython-project-template/loader.js"></script>
-<script type="text/javascript">start_loader("Loading System...")</script>
-```
+None of the team members were familiar with web development and the HTML/CSS languages before, so we set a realistic goal of just completing a home page and simple demo of the 4x4 technique during the weekend of Eduhack, even though we had more ideas that we hope to add to our project in the future.
+
+## Built With
+* HTML5
+* CSS
+* JavaScript
+* Python
+* [Brython](https://brython.info)
+* [Bootstrap](https://getbootstrap.com/)
+
+Made in Visual Studio Code
