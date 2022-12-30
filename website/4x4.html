@@ -38,53 +38,47 @@
           <table class="table table-bordered" id="table">
             <tbody>
               <tr>
-                <td id="11">一</td> <!--id format: [row #][col #]-->
-                <td id="12">二</td>
-                <td id="13">三</td>
-                <td id="14">四</td>
+                <td id="11"></td> <!--id format: [row #][col #]-->
+                <td id="12"></td>
+                <td id="13"></td>
+                <td id="14"></td>
+                <td><button onclick="readAloud(1)">🔉</button></td>
               </tr>
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="21"></td>
+                <td id="22"></td>
+                <td id="23"></td>
+                <td id="24"></td>
+                <td><button onclick="readAloud(2)">🔉</button></td>
               </tr>
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="31"></td>
+                <td id="32"></td>
+                <td id="33"></td>
+                <td id="34"></td>
+                <td><button onclick="readAloud(3)">🔉</button></td>
               </tr>
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="41"></td>
+                <td id="42"></td>
+                <td id="43"></td>
+                <td id="44"></td>
+                <td><button onclick="readAloud(4)">🔉</button></td>
               </tr>
             </tbody>
           </table>
           <button id="check">Check</button>
           <button id="start">Start</button>
-          <button onclick="readAloud(1)">Read row 1</button>  <!--TO DO: add function parameters-->
+          
+          
+          
+          
           <p id="result"></p>
           <a href="index.html">Back to Home Page</a>
         </div>
       </div>
     </div>
     
-    <script>
-      const readAloud = function(rowNum) {
-        rowNum = rowNum.toString();
-        let toSay = "";
-        for (let i = 1; i <= 4; i++) {
-          toSay = toSay + document.getElementById(rowNum + i.toString()).textContent
-        }
-        let utterance = new SpeechSynthesisUtterance(toSay);
-        utterance.voice = speechSynthesis.getVoices()[3]; // = Microsoft Huihui - Chinese (Simplified, PRC)
-        speechSynthesis.speak(utterance);
-      };
-    </script>
-
     <!--
       Your main logic could go into a dedicated .py file,
       so that the line number in error trace would correctly map into your .py file.
@@ -112,10 +106,10 @@
          captures and removes the loading blocker.
      -->
     <script src="loader.js"></script>
-<!--    <script type="text/javascript"> start_loader("Loading System...") </script>-->
+    <script type="text/javascript"> start_loader("Loading System...") </script>
     <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js"></script>
 
-<!--    <script type="text/javascript"> update_loader_message("Loading Standard Library...") </script>-->
+    <script type="text/javascript"> update_loader_message("Loading Standard Library...") </script>
     <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.min.js"></script>
     <!-- Use the following two to replace the above CDN, if you want to use not-yet-released Brython code base -->
     <!--<script src="https://raw.githack.com/brython-dev/brython/master/www/src/brython.js"></script>-->
@@ -129,8 +123,20 @@
     On subsequent runs, the modules it uses will already have been transpiled.
     It will go fast and any message you change will flash quickly.
     -->
-<!--    <script type="text/javascript"> update_loader_message("Loading Program Code....") </script>-->
+    <script type="text/javascript"> update_loader_message("Loading Program Code....") </script>
     <!-- Boilerplate code starts from here -->
 
+    <script>
+      const readAloud = function(rowNum) {
+        rowNum = rowNum.toString();
+        let toSay = "";
+        for (let i = 1; i <= 4; i++) {
+          toSay = toSay + document.getElementById(rowNum + i.toString()).textContent
+        }
+        let utterance = new SpeechSynthesisUtterance(toSay);
+        utterance.voice = speechSynthesis.getVoices()[3]; // = Microsoft Huihui - Chinese (Simplified, PRC)
+        speechSynthesis.speak(utterance);
+      };
+    </script>
   </body>
 </html>

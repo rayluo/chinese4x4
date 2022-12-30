@@ -6,8 +6,14 @@ from random import shuffle
 initial_cards = "一知半解一心一意一丘之貉一目了然"
 
 def set_table(characters):
-    for i, cell in enumerate(document.select("#table td")):
-        cell.text = characters[i]
+    cells = document.select("#table td")
+    cell_i = 0
+    card_i = 0
+    while card_i < len(initial_cards):
+        if cells[cell_i].id:    # if this cell has an id, then it is not for a button
+            cells[cell_i].text = initial_cards[card_i]
+            card_i = card_i + 1
+        cell_i = cell_i + 1
 
 set_table(initial_cards)
 
@@ -22,7 +28,8 @@ def start(event):
     document["start"].text = "Restart"
     
     for cell in document.select("#table td"):
-        cell.text = ""
+        if cell.id:
+            cell.text = ""
     
     cards_list = list(initial_cards)
     shuffle(cards_list)
