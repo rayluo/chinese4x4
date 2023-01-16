@@ -123,8 +123,13 @@
     On subsequent runs, the modules it uses will already have been transpiled.
     It will go fast and any message you change will flash quickly.
     -->
-    <script type="text/javascript"> update_loader_message("Loading Program Code....") </script>
+    <script type="text/javascript"> update_loader_message("Loading Program Code...") </script>
     <!-- Boilerplate code starts from here -->
+
+    <script>
+      update_loader_message("Loading Voice...");
+      var voices = speechSynthesis.getVoices();
+    </script>
 
     <script>
       const readAloud = function(rowNum) {
@@ -134,7 +139,7 @@
           toSay = toSay + document.getElementById(rowNum + i.toString()).textContent
         }
         let utterance = new SpeechSynthesisUtterance(toSay);
-        utterance.voice = speechSynthesis.getVoices()[3]; // = Microsoft Huihui - Chinese (Simplified, PRC)
+        utterance.lang = "zh-CN";
         speechSynthesis.speak(utterance);
       };
     </script>
