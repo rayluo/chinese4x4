@@ -6,7 +6,7 @@ body{
     margin: 0px;
     padding: 0px;
     background: #FFFFFF;
-    font-family: 'FangSong';
+    font-family: "Georgia", "Times New Roman", "KaiTi", "STKaiti", "serif";
     font-size: 12pt;
 }
          
@@ -138,6 +138,11 @@ header{
 #welcome p{
     margin-bottom: 40px;
     text-align: center;
+}
+
+#test_character p{
+    text-align: center;
+    font-size: 300px;
 }
 
 .copyright
