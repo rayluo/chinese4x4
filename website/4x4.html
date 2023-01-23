@@ -127,11 +127,7 @@
     <!-- Boilerplate code starts from here -->
 
     <script>
-      update_loader_message("Loading Voice...");
-      var voices = speechSynthesis.getVoices();
-    </script>
-
-    <script>
+      window.speechSynthesis.onvoiceschanged = window.speechSynthesis.getVoices;
       const readAloud = function(rowNum) {
         rowNum = rowNum.toString();
         let toSay = "";
