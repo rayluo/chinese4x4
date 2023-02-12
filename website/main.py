@@ -4,16 +4,11 @@ from random import shuffle
 # For example, use `"message".title()` instead of `import string; string.capwords("message")`
 
 initial_cards = "一知半解一心一意一丘之貉一目了然"
+_characters_selector = "#table td.char"
 
 def set_table(characters):
-    cells = document.select("#table td")
-    cell_i = 0
-    card_i = 0
-    while card_i < len(initial_cards):
-        if cells[cell_i].id:    # if this cell has an id, then it is not for a button
-            cells[cell_i].text = initial_cards[card_i]
-            card_i = card_i + 1
-        cell_i = cell_i + 1
+    for i, cell in enumerate(document.select(_characters_selector)):
+        cell.text = characters[i]
 
 set_table(initial_cards)
 
@@ -27,7 +22,7 @@ create_empty_cards(16)
 def start(event):
     document["start"].text = "Restart"
     
-    for cell in document.select("#table td"):
+    for cell in document.select(_characters_selector):
         if cell.id:
             cell.text = ""
     
@@ -39,7 +34,7 @@ def start(event):
 @bind("#check", "click")
 def check(event):
     wrong_count = 0
-    for i, cell in enumerate(document.select("#table td")):
+    for i, cell in enumerate(document.select(_characters_selector)):
         if initial_cards[i] != cell.text:
             wrong_count = wrong_count + 1
 
