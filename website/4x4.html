@@ -132,7 +132,7 @@
         rowNum = rowNum.toString();
         let toSay = "";
         for (let i = 1; i <= 4; i++) {
-          toSay = toSay + document.getElementById(rowNum + i.toString()).textContent
+          toSay = toSay + document.getElementById(rowNum + i.toString()).textContent;
         }
         let utterance = new SpeechSynthesisUtterance(toSay);
         utterance.lang = "zh-CN";
