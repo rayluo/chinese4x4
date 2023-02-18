@@ -12,12 +12,15 @@
     <title>Chinese 4x4 Learning</title>
   </head>
   <style>
-    #cards, td {
+    #cards, td.char {
       font-size: 6vw;
     }
-    td {
+    td.def {
+      font-size: 1.9em;
+    }
+    td.char {
       height: 1.7em;
-      width: 1.7em;
+      width: 1.2em;
     }
     body {
       font-family: "Georgia", "Times New Roman", "KaiTi", "STKaiti", "serif";
@@ -39,6 +42,7 @@
                 <td class="char" id="13"></td>
                 <td class="char" id="14"></td>
                 <td><button onclick="readAloud(1)">🔉</button></td>
+                <td class="def"></td>
               </tr>
               <tr>
                 <td class="char" id="21"></td>
@@ -46,6 +50,7 @@
                 <td class="char" id="23"></td>
                 <td class="char" id="24"></td>
                 <td><button onclick="readAloud(2)">🔉</button></td>
+                <td class="def"></td>
               </tr>
               <tr>
                 <td class="char" id="31"></td>
@@ -53,6 +58,7 @@
                 <td class="char" id="33"></td>
                 <td class="char" id="34"></td>
                 <td><button onclick="readAloud(3)">🔉</button></td>
+                <td class="def"></td>
               </tr>
               <tr>
                 <td class="char" id="41"></td>
@@ -60,11 +66,13 @@
                 <td class="char" id="43"></td>
                 <td class="char" id="44"></td>
                 <td><button onclick="readAloud(4)">🔉</button></td>
+                <td class="def"></td>
               </tr>
             </tbody>
           </table>
-          <button id="check">Check</button>
           <button id="start">Start</button>
+          <button id="check">Check</button>
+          <button id="toggle_defs" onclick="toggle_defs()">Hide definitions</button>
           <p id="result"></p>
           <a href="index.html">Back to Home Page</a>
         </div>
@@ -130,6 +138,22 @@
         utterance.lang = "zh-CN";
         speechSynthesis.speak(utterance);
       };
+
+      const toggle_defs = function() {
+        const cells = document.getElementsByClassName("def");
+        for (var cell of cells) {
+          if (cell.style.display === "none") {
+            cell.style.display = "block";
+          } else {
+            cell.style.display = "none";
+          }
+        }
+        const button = document.getElementById("toggle_defs");
+        if (button.textContent === "Hide definitions") {
+          button.textContent = "Show definitions";
+        } else {
+          button.textContent = "Hide definitions";
+        }
+      }
     </script>
   </body>
-</html>
