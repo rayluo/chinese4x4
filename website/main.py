@@ -64,6 +64,6 @@ def drop(event):
     character.text = to_replace
     event.preventDefault()
 
-for cell in document.select("td"):
+for cell in document.select(_characters_selector):
     cell.bind("dragover", dragover)
     cell.bind("drop", drop)
