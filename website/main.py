@@ -4,6 +4,12 @@ from random import shuffle
 # For example, use `"message".title()` instead of `import string; string.capwords("message")`
 
 initial_cards = "一知半解一心一意一丘之貉一目了然"
+initial_definitions = [
+    "A little knowledge is a dangerous thing.",
+    "John is a person who always works with undivided attention.",
+    "These people are cut from the same cloth.",
+    "His words just leapt to the eye.",
+]
 _characters_selector = "#table td.char"
 
 def set_table(characters):
@@ -11,6 +17,12 @@ def set_table(characters):
         cell.text = characters[i]
 
 set_table(initial_cards)
+
+def write_definitions(definitions):
+    for i, cell in enumerate(document.select("#table td.def")):
+        cell.text = definitions[i]
+
+write_definitions(initial_definitions)
 
 def create_empty_cards(n):
     for i in range(n):
