@@ -10,6 +10,12 @@ initial_definitions = [
     "These people are cut from the same cloth.",
     "His words just leapt to the eye.",
 ]
+initial_pinyin = [
+    "yì zhī bàn jiě",
+    "yì xīn yí yì",
+    "yì qiū zhī hé",
+    "yí mù liǎo rán",
+]
 _characters_selector = "#table td.char"
 
 def set_table(characters):
@@ -18,9 +24,15 @@ def set_table(characters):
 
 set_table(initial_cards)
 
-def write_definitions(definitions):
+def write_pinyin(pinyin_list):
+    for i, cell in enumerate(document.select("#table td.pinyin")):
+        cell.text = pinyin_list[i]
+
+write_pinyin(initial_pinyin)
+
+def write_definitions(defs_list):
     for i, cell in enumerate(document.select("#table td.def")):
-        cell.text = definitions[i]
+        cell.text = defs_list[i]
 
 write_definitions(initial_definitions)
 
