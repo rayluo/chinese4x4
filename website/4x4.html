@@ -41,8 +41,8 @@
                 <td class="char" id="12"></td>
                 <td class="char" id="13"></td>
                 <td class="char" id="14"></td>
-                <td class="pinyin"></td>
                 <td><button onclick="readAloud(1)">🔉</button></td>
+                <td class="pinyin"></td>
                 <td class="def"></td>
               </tr>
               <tr>
@@ -50,8 +50,8 @@
                 <td class="char" id="22"></td>
                 <td class="char" id="23"></td>
                 <td class="char" id="24"></td>
-                <td class="pinyin"></td>
                 <td><button onclick="readAloud(2)">🔉</button></td>
+                <td class="pinyin"></td>
                 <td class="def"></td>
               </tr>
               <tr>
@@ -59,8 +59,8 @@
                 <td class="char" id="32"></td>
                 <td class="char" id="33"></td>
                 <td class="char" id="34"></td>
-                <td class="pinyin"></td>
                 <td><button onclick="readAloud(3)">🔉</button></td>
+                <td class="pinyin"></td>
                 <td class="def"></td>
               </tr>
               <tr>
@@ -68,8 +68,8 @@
                 <td class="char" id="42"></td>
                 <td class="char" id="43"></td>
                 <td class="char" id="44"></td>
-                <td class="pinyin"></td>
                 <td><button onclick="readAloud(4)">🔉</button></td>
+                <td class="pinyin"></td>
                 <td class="def"></td>
               </tr>
             </tbody>
@@ -147,7 +147,7 @@
         const cells = document.getElementsByClassName(col_class_name);
         for (var cell of cells) {
           if (cell.style.display === "none") {
-            cell.style.display = "block";
+            cell.style.display = "";
           } else {
             cell.style.display = "none";
           }
