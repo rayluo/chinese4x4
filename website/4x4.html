@@ -16,7 +16,7 @@
       font-size: 6vw;
     }
     td.def, td.pinyin {
-      font-size: 1.7em;
+      font-size: 1.5em;
     }
     td.char {
       height: 1.7em;
@@ -36,54 +36,58 @@
         <div class="col-8">
           <table class="table table-bordered" id="table">
             <tbody>
-              <tr>
-                <td class="char" id="11"></td> <!--id format: [row #][col #]-->
-                <td class="char" id="12"></td>
-                <td class="char" id="13"></td>
-                <td class="char" id="14"></td>
+              <tr id="row_1">
+                <td class="char stage_1 stage_2 stage_3"></td>
+                <td class="char stage_2 stage_3"></td>
+                <td class="char stage_3"></td>
+                <td class="char stage_3"></td>
                 <td><button onclick="readAloud(1)">🔉</button></td>
                 <td class="pinyin"></td>
                 <td class="def"></td>
               </tr>
-              <tr>
-                <td class="char" id="21"></td>
-                <td class="char" id="22"></td>
-                <td class="char" id="23"></td>
-                <td class="char" id="24"></td>
+              <tr id="row_2">
+                <td class="char stage_1 stage_2 stage_3"></td>
+                <td class="char stage_2 stage_3"></td>
+                <td class="char stage_3"></td>
+                <td class="char stage_3"></td>
                 <td><button onclick="readAloud(2)">🔉</button></td>
                 <td class="pinyin"></td>
                 <td class="def"></td>
               </tr>
-              <tr>
-                <td class="char" id="31"></td>
-                <td class="char" id="32"></td>
-                <td class="char" id="33"></td>
-                <td class="char" id="34"></td>
+              <tr id="row_3">
+                <td class="char stage_1 stage_2 stage_3"></td>
+                <td class="char stage_2 stage_3"></td>
+                <td class="char stage_3"></td>
+                <td class="char stage_3"></td>
                 <td><button onclick="readAloud(3)">🔉</button></td>
                 <td class="pinyin"></td>
                 <td class="def"></td>
               </tr>
-              <tr>
-                <td class="char" id="41"></td>
-                <td class="char" id="42"></td>
-                <td class="char" id="43"></td>
-                <td class="char" id="44"></td>
+              <tr id="row_4">
+                <td class="char stage_1 stage_2 stage_3"></td>
+                <td class="char stage_2 stage_3"></td>
+                <td class="char stage_3"></td>
+                <td class="char stage_3"></td>
                 <td><button onclick="readAloud(4)">🔉</button></td>
                 <td class="pinyin"></td>
                 <td class="def"></td>
               </tr>
             </tbody>
           </table>
-          <button id="start">Start</button>
+          <button class="starter" value=1>Stage 1</button>
+          <button class="starter" value=2>Stage 2</button>
+          <button class="starter" value=3>Stage 3</button>
           <button id="check">Check</button>
-          <button id="toggle_pinyin" onclick="toggle_column('pinyin', 'toggle_pinyin')">Hide pinyin</button>
-          <button id="toggle_defs" onclick="toggle_column('def', 'toggle_defs')">Hide definitions</button>
+          <span class="float-end">
+            <button id="toggle_pinyin" onclick="toggleColumnWithButton('pinyin', 'toggle_pinyin')">Hide pinyin</button>
+            <button id="toggle_defs" onclick="toggleColumnWithButton('def', 'toggle_defs')">Hide definitions</button>
+          </span>
           <p id="result"></p>
           <a href="index.html">Back to Home Page</a>
         </div>
       </div>
     </div>
-    
+
     <!--
       Your main logic could go into a dedicated .py file,
       so that the line number in error trace would correctly map into your .py file.
@@ -94,8 +98,6 @@
       in order AFTER all the javascript scripts.
       You cannot interleave python/javascript scripts and expect them to run in order.
     -->
-    <script type="text/python" src="main.py"></script>
-
 
     <!-- Boilerplate code starts from here -->
 
@@ -128,36 +130,10 @@
     It will go fast and any message you change will flash quickly.
     -->
     <script type="text/javascript"> update_loader_message("Loading Program Code...") </script>
-    <!-- Boilerplate code starts from here -->
+    <!-- Boilerplate code ends here -->
 
-    <script>
-      window.speechSynthesis.onvoiceschanged = window.speechSynthesis.getVoices;
-      const readAloud = function(rowNum) {
-        rowNum = rowNum.toString();
-        let toSay = "";
-        for (let i = 1; i <= 4; i++) {
-          toSay = toSay + document.getElementById(rowNum + i.toString()).textContent;
-        }
-        let utterance = new SpeechSynthesisUtterance(toSay);
-        utterance.lang = "zh-CN";
-        speechSynthesis.speak(utterance);
-      };
-
-      const toggle_column = function(col_class_name, button_id) {
-        const cells = document.getElementsByClassName(col_class_name);
-        for (var cell of cells) {
-          if (cell.style.display === "none") {
-            cell.style.display = "";
-          } else {
-            cell.style.display = "none";
-          }
-        }
-        const button = document.getElementById(button_id);
-        if (button.textContent.substring(0, 4) === "Hide") {
-          button.textContent = "Show" + button.textContent.substring(4);
-        } else {
-          button.textContent = "Hide" + button.textContent.substring(4);
-        }
-      }
-    </script>
+    <script> window.speechSynthesis.onvoiceschanged = window.speechSynthesis.getVoices </script>
+    <script src="functions.js"></script>
+    <script type="text/python" src="main.py"></script>
   </body>
+</html>
